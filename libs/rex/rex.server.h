@@ -32,26 +32,26 @@ private:
 public: 
     Rex() : host("127.0.0.1"), port("8000"), view("html") {
     
-        if (fileExist("server.config.json")) {
+        if (fileExist("config/rex.config.json")) {
             
             int nLength;
             string fieldString;
 
-            fieldString = parserConfig("host");
+            fieldString = Rex::parserConfig("host");
             if (fieldString == "Error") fieldString = "127.0.0.1";
             char szBuf[fieldString.length()];    
             nLength = fieldString.copy(szBuf, fieldString.length());
             szBuf[nLength] = '\0';            
             host = szBuf;
             
-            fieldString = parserConfig("port");
+            fieldString = Rex::parserConfig("port");
             if (fieldString == "Error") fieldString = "8000";
             char szBuf_2[fieldString.length()];
             nLength = fieldString.copy(szBuf_2, fieldString.length());
             szBuf_2[nLength] = '\0';
             port = szBuf_2;
 
-            view = parserConfig("view");
+            view = Rex::parserConfig("view");
             if (view == "Error") view = "html";
 
         }else {
@@ -195,11 +195,14 @@ public:
                 // Переданные данные от клиента записываем в строку JSON
                 string json = Rex::getRequest(buf);
 
+                mkdir("temp");
+                string temp = "temp/rex.request.json";
+
                 // и сохраняем в файл (почему-то пока только с файлом работает rapidjson)
-                writeFile("server.request.json", json);
+                writeFile(temp, json);
 
                 // запрашиваем поле path (путь в адресной строке браузера)
-                string path = parserFile("server.request.json", "path");   
+                string path = parserFile(temp, "path");   
 
 
                 // буфер для перевода string в массив char
@@ -210,7 +213,7 @@ public:
                
                 
                 // запрашиваем поле method (GET PUT POST...)
-                string method = parserFile("server.request.json", "method");
+                string method = parserFile(temp, "method");
                 
                 
                 if (path != "/favicon.ico/") {
@@ -281,10 +284,15 @@ public:
     }
 
 
+    string parserConfig(string field) {    
+        return parserFile("config/rex.config.json", field);
+    }
+
 
     void createConfigFiles(void) {
+        mkdir("config");
         string text = "{\n    \"view\": \"html\",\n    \"content-type\": \"text/html\",\n    \"host\": \"127.0.0.1\",\n    \"port\": \"8000\"\n}";
-        writeFile("server.config.json", text);
+        writeFile("config/rex.config.json", text);
 
         return;
     }

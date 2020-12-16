@@ -1,9 +1,3 @@
 /temp
 
-/config
-
-/html
-
-/routes
-
-*.exe
+/*.exe

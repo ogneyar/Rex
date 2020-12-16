@@ -20,7 +20,6 @@ using namespace rapidjson;
 int writeFile(string, string);
 string readFile(string);
 string parserFile(string, string);
-string parserConfig(string);
 string parserJSON(string, string);
 bool fileExist(string);
 // const char *strToChar(string);
@@ -70,11 +69,6 @@ string parserFile(string file, string field) {
         return parserJSON(readFile(file), field);
     }    
     return "Error";
-}
-
-
-string parserConfig(string field) {    
-    return parserFile("server.config.json", field);
 }
 
 

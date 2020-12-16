@@ -1,14 +1,14 @@
 all:
-	g++ -O3 -s server.cpp -l ws2_32
+	g++ -O3 -s server.cpp -o rex.exe -l ws2_32
 
 clean:
-	del -f a.exe
+	del -f server.exe
 
-s:
-	g++ -O3 -s server.cpp -o server.exe -l ws2_32
+32:
+	g++ -O3 -s server.cpp -o exe/rex32.exe -l ws2_32
 	
-server:
-	g++ -O3 -s server.cpp -o server.exe -l ws2_32
+64:
+	g++ -O3 -s server.cpp -o exe/rex64.exe -l ws2_32
 
 
 
