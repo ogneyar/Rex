@@ -110,6 +110,7 @@ public:
         if (result != 0) {
             cerr << "getaddrinfo failed: " << result << "\n";
             WSACleanup(); // выгрузка библиотеки Ws2_32.dll
+			system("pause");
             return 1;
         }
 
@@ -123,6 +124,7 @@ public:
             cerr << "Error at socket: " << WSAGetLastError() << "\n";
             freeaddrinfo(addr);
             WSACleanup();
+			system("pause");
             return 1;
         }
 
@@ -139,6 +141,7 @@ public:
             freeaddrinfo(addr);
             closesocket(listen_socket);
             WSACleanup();
+			system("pause");
             return 1;
         }
 
@@ -148,6 +151,7 @@ public:
             cerr << "listen failed with error: " << WSAGetLastError() << "\n";
             closesocket(listen_socket);
             WSACleanup();
+			system("pause");
             return 1;
         }
 
@@ -168,6 +172,7 @@ public:
                 cerr << "accept failed: " << WSAGetLastError() << "\n";
                 closesocket(listen_socket);
                 WSACleanup();
+				system("pause");
                 return 1;
             }
         
@@ -278,6 +283,8 @@ public:
         closesocket(listen_socket);
         freeaddrinfo(addr);
         WSACleanup();
+		
+		system("pause");
 
         return 0;
     }
