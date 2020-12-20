@@ -5,7 +5,6 @@
 #include <string> // работа со строками
 #include <cstring> // работа с символами (char)
 #include <typeinfo> // работа с типами данных
-
 #include <dir.h> // работа с директориями
 
 #include "rex.functions.h"
@@ -153,7 +152,7 @@ public:
         }
 
     
-        cout << "Server rex hes been started on " << host << ".\n";
+        cout << "Server Rex has been started on " << host << ".\n";
         cout << "Listen port " << port << "... ";
 
         const int max_client_buffer_size = 2048;
@@ -172,7 +171,7 @@ public:
                 return 1;
             }
         
-
+			// Принимаем входящее сообщение в буфер (buf)
             result = recv(client_socket, buf, max_client_buffer_size, 0);
 
             stringstream response; // сюда будет записываться ответ клиенту
