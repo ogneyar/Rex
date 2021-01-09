@@ -16,7 +16,8 @@ int main() {
 
         Rex server; // rex берёт настройки из config/rex.config.json
         // можно и так подключить
-        // Rex server("localhost","8080", "view"); 
+        // Rex server("192.168.0.244", "8000", "html"); 
+		// Rex server("0.0.0.0", "8000", "html"); 
         server.run(); // старт сервера
 
     }catch(E e) {
