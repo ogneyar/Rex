@@ -14,7 +14,7 @@ class E { public: void Exception() { cout << "exception" << endl; } };
 int main() {
     try{
 
-        Rex server; // rex берёт настройки из server.config.json
+        Rex server; // rex берёт настройки из config/rex.config.json
         // можно и так подключить
         // Rex server("localhost","8080", "view"); 
         server.run(); // старт сервера
