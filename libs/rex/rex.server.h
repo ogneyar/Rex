@@ -200,12 +200,12 @@ public:
                 string json = Rex::getRequest(buf);
 
 // на время убрал
-                // mkdir("temp");
+                mkdir("temp");
                 string temp = "temp/rex.request.json";
 
                 // и сохраняем в файл (почему-то пока только с файлом работает rapidjson)
 // на время убрал
-                // writeFile(temp, json);
+                writeFile(temp, json);
 
                 // запрашиваем поле path (путь в адресной строке браузера)
                 string path = parserFile(temp, "path");    
@@ -343,6 +343,11 @@ public:
 
             if (buf[strlen(buf)-1] == '\r') buf[strlen(buf)-1] = '\0';
 
+            int len = strlen(buf);
+            for(int i = 1; i < len; ++i) {
+                if (buf[i] == '\"') buf[i] = '\'';
+            }
+        
             request << buf << "\"";
         }
         request << "\n}";
