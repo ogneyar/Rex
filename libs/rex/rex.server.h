@@ -1,3 +1,4 @@
+#include <WinSock2.h>
 
 #include <fstream> // работа с файлами
 #include <iostream> // работа вводом/выводом данных
@@ -13,7 +14,6 @@
 // Подробнее: http://stackoverflow.com/a/20306451
 // #define _WIN32_WINNT 0x501 
 
-#include <WinSock2.h>
 #include <WS2tcpip.h>
 
 // Необходимо, чтобы линковка происходила с DLL-библиотекой 
@@ -156,7 +156,7 @@ public:
         }
 
     
-        cout << "Server Rex has been started on " << host << ".\n";
+        cout << "Server Rex has been started on http://" << host << ":" << port << "\n";
         cout << "Listen port " << port << "... ";
 
         const int max_client_buffer_size = 2048;
