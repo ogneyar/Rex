@@ -1,4 +1,1 @@
-# Rex - web сервер на си++
-
-Описание не готово...
-
+# Rex - web server on C++ (in development)

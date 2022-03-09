@@ -199,12 +199,10 @@ public:
                 // Переданные данные от клиента записываем в строку JSON
                 string json = Rex::getRequest(buf);
 
-// на время убрал
                 mkdir("temp");
                 string temp = "temp/rex.request.json";
 
                 // и сохраняем в файл (почему-то пока только с файлом работает rapidjson)
-// на время убрал
                 writeFile(temp, json);
 
                 // запрашиваем поле path (путь в адресной строке браузера)
